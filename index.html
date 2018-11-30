@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+        <link rel="stylesheet" href="styles.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container" id="el">
+        <div class="countdown">
+            {{minutes}}:{{seconds}}
+        </div>
+        <button class="btn btn-primary" @click="timer()">Start</button>
+        <button class="btn btn-warning" @click="stopTimer()">Stop</button>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el: '#el',
+            data: {
+                minutes: 25,
+                seconds: '00'
+            },
+            methods: {
+                timer: function () {
+                    this.minutes = 24;
+                    this.seconds = 59;
+
+                    let minutesTime = setInterval( () => {
+                        if(this.minutes > 0)
+                        {
+                            this.minutes--; 
+                        }
+
+                        if(this.minutes == 0)
+                        {
+                            this.minutes = '00';
+                        }
+                        console.log(this.minutes);
+                    }, 60000);
+
+                    let secondsTime = setInterval( () => {
+                        while(this.minutes)
+                        if (this.seconds > 0)
+                        {
+                            this.seconds--; 
+                        }
+
+                        if (this.seconds === 0)
+                        {
+                            this.seconds = '00';
+                        }
+                    }, 10000);
+                },
+                stopTimer: function() {
+                    this.minutes = 25;
+                    this.seconds = '00';
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,17 @@
+body {
+    background: #ffa;
+}
+.container {
+    background: #faa ;
+    border-radius: 3px;
+    padding: 20px;
+    text-align: center;
+    margin: auto;
+}
+
+.countdown {
+    display: block;
+    text-align: center;
+    font-size: 100px;
+}
+
